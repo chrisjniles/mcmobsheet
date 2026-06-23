@@ -18,28 +18,111 @@ class Row(NamedTuple):
 
 
 # Title emoji per entity id. Falls back to a paw print for anything unlisted.
+# Title emoji per entity id, covering every mob in current Minecraft (26.2).
+# Emoji is decorative — the display name is always shown alongside it — so a few
+# reused or approximate icons are fine. Anything unlisted falls back to a paw print.
 ENTITY_EMOJI = {
-    "minecraft:donkey": "\U0001facf",  # donkey
-    "minecraft:horse": "\U0001f434",  # horse face
-    "minecraft:mule": "\U0001f434",
-    "minecraft:skeleton_horse": "\U0001f480",  # skull
-    "minecraft:zombie_horse": "\U0001f9df",  # zombie
-    "minecraft:llama": "\U0001f999",
-    "minecraft:trader_llama": "\U0001f999",
-    "minecraft:cat": "\U0001f431",
-    "minecraft:ocelot": "\U0001f431",
-    "minecraft:wolf": "\U0001f43a",
-    "minecraft:fox": "\U0001f98a",
-    "minecraft:sheep": "\U0001f411",
-    "minecraft:cow": "\U0001f404",
-    "minecraft:pig": "\U0001f437",
-    "minecraft:chicken": "\U0001f414",
-    "minecraft:villager": "\U0001f9d1",
-    "minecraft:zombie": "\U0001f9df",
-    "minecraft:creeper": "\U0001f4a3",
-    "minecraft:enderman": "\U0001f47e",
+    # Equines and camels
+    "minecraft:horse": "🐴",
+    "minecraft:donkey": "🫏",
+    "minecraft:mule": "🐴",
+    "minecraft:skeleton_horse": "🐴",
+    "minecraft:zombie_horse": "🐴",
+    "minecraft:camel": "🐪",
+    "minecraft:camel_husk": "🐪",
+    "minecraft:llama": "🦙",
+    "minecraft:trader_llama": "🦙",
+    # Farm and land passives
+    "minecraft:cow": "🐄",
+    "minecraft:mooshroom": "🍄",
+    "minecraft:pig": "🐷",
+    "minecraft:sheep": "🐑",
+    "minecraft:chicken": "🐔",
+    "minecraft:rabbit": "🐰",
+    "minecraft:goat": "🐐",
+    "minecraft:panda": "🐼",
+    "minecraft:fox": "🦊",
+    "minecraft:wolf": "🐺",
+    "minecraft:cat": "🐱",
+    "minecraft:ocelot": "🐆",
+    "minecraft:parrot": "🦜",
+    "minecraft:bat": "🦇",
+    "minecraft:bee": "🐝",
+    "minecraft:frog": "🐸",
+    "minecraft:tadpole": "🐸",
+    "minecraft:turtle": "🐢",
+    "minecraft:armadillo": "🦔",
+    "minecraft:sniffer": "🦕",
+    "minecraft:allay": "🧚",
+    "minecraft:polar_bear": "🐻‍❄️",
+    # Golems and constructs
+    "minecraft:iron_golem": "🗿",
+    "minecraft:snow_golem": "⛄",
+    "minecraft:copper_golem": "🤖",
+    # Aquatic
+    "minecraft:cod": "🐟",
+    "minecraft:salmon": "🐟",
+    "minecraft:tropical_fish": "🐠",
+    "minecraft:pufferfish": "🐡",
+    "minecraft:squid": "🦑",
+    "minecraft:glow_squid": "🦑",
+    "minecraft:dolphin": "🐬",
+    "minecraft:axolotl": "🦎",
+    "minecraft:nautilus": "🐚",
+    "minecraft:zombie_nautilus": "🐚",
+    # Nether
+    "minecraft:strider": "🔥",
+    "minecraft:hoglin": "🐗",
+    "minecraft:zoglin": "🐗",
+    "minecraft:piglin": "🐽",
+    "minecraft:piglin_brute": "🐽",
+    "minecraft:zombified_piglin": "🧟",
+    "minecraft:blaze": "🔥",
+    "minecraft:magma_cube": "🟧",
+    "minecraft:ghast": "👻",
+    "minecraft:happy_ghast": "☁️",
+    # Undead and other hostiles
+    "minecraft:zombie": "🧟",
+    "minecraft:husk": "🧟",
+    "minecraft:drowned": "🧟",
+    "minecraft:zombie_villager": "🧟",
+    "minecraft:giant": "🧟",
+    "minecraft:skeleton": "💀",
+    "minecraft:stray": "💀",
+    "minecraft:bogged": "💀",
+    "minecraft:wither_skeleton": "💀",
+    "minecraft:parched": "💀",
+    "minecraft:creeper": "💣",
+    "minecraft:spider": "🕷️",
+    "minecraft:cave_spider": "🕷️",
+    "minecraft:silverfish": "🐛",
+    "minecraft:endermite": "🐛",
+    "minecraft:enderman": "👤",
+    "minecraft:slime": "🟩",
+    "minecraft:sulfur_cube": "🟨",
+    "minecraft:witch": "🧙",
+    "minecraft:vex": "👿",
+    "minecraft:phantom": "🦇",
+    "minecraft:warden": "👹",
+    "minecraft:breeze": "🌀",
+    "minecraft:creaking": "🪵",
+    "minecraft:shulker": "📦",
+    "minecraft:guardian": "🐡",
+    "minecraft:elder_guardian": "🐡",
+    # Illagers and raids
+    "minecraft:pillager": "🏹",
+    "minecraft:vindicator": "🪓",
+    "minecraft:evoker": "🔮",
+    "minecraft:illusioner": "🎭",
+    "minecraft:ravager": "🐂",
+    # Villagers and traders
+    "minecraft:villager": "🧑‍🌾",
+    "minecraft:wandering_trader": "🧳",
+    # Bosses
+    "minecraft:ender_dragon": "🐉",
+    "minecraft:wither": "☠️",
 }
-DEFAULT_ENTITY_EMOJI = "\U0001f43e"  # paw prints
+DEFAULT_ENTITY_EMOJI = "🐾"  # paw prints
 
 # Boolean tags worth surfacing only when they are set to true.
 _TRUE_FLAGS = [

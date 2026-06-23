@@ -80,7 +80,8 @@ pbpaste | mcmobsheet
 ## What it understands
 
 - **Any entity** — best-effort stats (health, attributes, status effects, common
-  flags) for every mob, with a note when there's no dedicated translator yet.
+  flags) for every mob, with a note when there's no dedicated translator yet. Every
+  mob in current Minecraft (Java 26.2) gets a recognizable icon and a minimal sheet.
 - **Horse family** — donkeys, horses, mules, and skeleton/zombie horses get
   tailored output: taming, saddle, chest, temper, jump height, and more.
 - **Blocks** — `/setblock` commands with block states like
