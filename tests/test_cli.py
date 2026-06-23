@@ -17,7 +17,7 @@ def test_argument_mode(capsys):
     rc = cli.main([DONKEY])
     out = capsys.readouterr().out
     assert rc == 0
-    assert 'Donkey — "Cloppin"' in out
+    assert 'Donkey - "Cloppin"' in out
     assert "Location: -548, 66, -522" in out
     assert "8.4 hearts (16.8)" in out
     assert "~ 3.9 blocks (0.841)" in out

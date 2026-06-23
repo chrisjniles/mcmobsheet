@@ -11,7 +11,7 @@ from mcmobsheet.parser import parse_command
 
 _PROMPT = "mcmobsheet> "
 _BANNER = (
-    "mcmobsheet — paste a /summon or /setblock command (from F3+I) and press Enter.\n"
+    "mcmobsheet - paste a /summon or /setblock command (from F3+I) and press Enter.\n"
     "Type 'quit' or press Ctrl+D to exit.\n"
 )
 
@@ -56,7 +56,7 @@ def _interactive() -> int:
 def _process(text: str) -> int:
     try:
         cmd = parse_command(text)
-    except Exception as exc:  # noqa: BLE001 — surface any parse failure to the user
+    except Exception as exc:  # noqa: BLE001 - surface any parse failure to the user
         print(f"Could not parse command: {exc}", file=sys.stderr)
         return 1
     print(render(cmd))

@@ -57,14 +57,14 @@ def render_setblock(cmd: SetblockCommand) -> str:
 
 def _title(name: str, custom_name) -> str:
     if custom_name:
-        return f'{name} — "{custom_name}"'
+        return f'{name} - "{custom_name}"'
     return name
 
 
 def _section_header(title: str) -> str:
-    prefix = f"── {title} "
+    prefix = f"-- {title} "
     pad = max(0, _SECTION_WIDTH - len(prefix))
-    return prefix + "─" * pad
+    return prefix + "-" * pad
 
 
 def _format_rows(rows) -> list[str]:
@@ -78,6 +78,6 @@ def _format_rows(rows) -> list[str]:
 
 def _disclaimer() -> list[str]:
     return [
-        "Best-effort display — some info may be incomplete or inaccurate.",
+        "Best-effort display - some info may be incomplete or inaccurate.",
         f"Request mob-specific support: {REPO_URL}/issues",
     ]
