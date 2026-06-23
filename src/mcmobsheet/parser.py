@@ -4,8 +4,7 @@ from __future__ import annotations
 
 import re
 
-from nbtlib import parse_nbt
-
+from mcmobsheet import snbt
 from mcmobsheet.types import SetblockCommand, SummonCommand
 
 _BLOCK_STATE_RE = re.compile(r"^([^\[\]{}]+)(?:\[(.*)\])?$")
@@ -46,10 +45,11 @@ def _parse_nbt(nbt_str):
     if not nbt_str:
         return {}
     try:
-        return parse_nbt(nbt_str)
+        result = snbt.parse(nbt_str)
     except Exception:
         # A malformed NBT blob shouldn't sink the whole command; show what we can.
         return {}
+    return result if isinstance(result, dict) else {}
 
 
 def _parse_summon(tokens, nbt_str) -> SummonCommand:
