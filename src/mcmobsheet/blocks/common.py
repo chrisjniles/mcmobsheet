@@ -6,32 +6,19 @@ from typing import Optional
 
 from mcmobsheet.entities.common import Row
 
-BLOCK_EMOJI = {
-    "minecraft:chest": "\U0001f4e6",
-    "minecraft:furnace": "\U0001f525",
-    "minecraft:torch": "\U0001f526",
-    "minecraft:water": "\U0001f4a7",
-    "minecraft:lava": "\U0001f30b",
-}
-DEFAULT_BLOCK_EMOJI = "\U0001f9f1"  # brick
-
-# state key -> (emoji, label)
+# state key -> label
 _STATE_DISPLAY = {
-    "facing": ("\U0001f9ed", "Facing"),
-    "half": ("↕️", "Half"),
-    "axis": ("\U0001f4d0", "Axis"),
-    "shape": ("\U0001f4d0", "Shape"),
-    "waterlogged": ("\U0001f4a7", "Waterlogged"),
-    "powered": ("⚡", "Powered"),
-    "lit": ("\U0001f4a1", "Lit"),
-    "open": ("\U0001f6aa", "Open"),
-    "type": ("\U0001f527", "Type"),
+    "facing": "Facing",
+    "half": "Half",
+    "axis": "Axis",
+    "shape": "Shape",
+    "waterlogged": "Waterlogged",
+    "powered": "Powered",
+    "lit": "Lit",
+    "open": "Open",
+    "type": "Type",
 }
 _BOOL_VALUES = {"true", "false"}
-
-
-def emoji_for(block_id: str) -> str:
-    return BLOCK_EMOJI.get(block_id, DEFAULT_BLOCK_EMOJI)
 
 
 def describe(states: dict[str, str]) -> Optional[str]:
@@ -61,8 +48,8 @@ def state_rows(states: dict[str, str]) -> list[Row]:
             display_value = "Yes"
         else:
             display_value = _titleize(value)
-        emoji, label = _STATE_DISPLAY.get(key, ("\U0001f4d0", _titleize(key)))
-        rows.append(Row(emoji, label, display_value))
+        label = _STATE_DISPLAY.get(key, _titleize(key))
+        rows.append(Row(label, display_value))
     return rows
 
 

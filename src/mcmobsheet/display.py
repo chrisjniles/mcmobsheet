@@ -1,4 +1,4 @@
-"""Render parsed commands into the Option E layout (headers + emoji rows)."""
+"""Render parsed commands into sectioned, human-readable stat sheets."""
 
 from __future__ import annotations
 
@@ -24,8 +24,8 @@ def render_summon(cmd: SummonCommand) -> str:
     translator = get_translator(cmd)
     custom = translator.custom_name()
 
-    lines = [_title(translator.emoji(), cmd.entity_name, custom)]
-    lines.append(f"\U0001f4cd Location: {translate.coords(cmd.x, cmd.y, cmd.z)}")
+    lines = [_title(cmd.entity_name, custom)]
+    lines.append(f"Location: {translate.coords(cmd.x, cmd.y, cmd.z)}")
 
     for title, rows in translator.sections():
         lines.append("")
@@ -43,8 +43,8 @@ def render_setblock(cmd: SetblockCommand) -> str:
     summary = blocks.describe(cmd.states)
     title = cmd.block_name + (f" {summary}" if summary else "")
 
-    lines = [f"{blocks.emoji_for(cmd.block_id)} {title}"]
-    lines.append(f"\U0001f4cd Location: {translate.coords(cmd.x, cmd.y, cmd.z)}")
+    lines = [title]
+    lines.append(f"Location: {translate.coords(cmd.x, cmd.y, cmd.z)}")
 
     rows = blocks.state_rows(cmd.states)
     if rows:
@@ -55,11 +55,10 @@ def render_setblock(cmd: SetblockCommand) -> str:
     return "\n".join(lines)
 
 
-def _title(emoji: str, name: str, custom_name) -> str:
-    line = f"{emoji} {name}"
+def _title(name: str, custom_name) -> str:
     if custom_name:
-        line += f' — "{custom_name}"'
-    return line
+        return f'{name} — "{custom_name}"'
+    return name
 
 
 def _section_header(title: str) -> str:
@@ -73,12 +72,12 @@ def _format_rows(rows) -> list[str]:
     lines = []
     for row in rows:
         label = (row.label + ":").ljust(width + 1)
-        lines.append(f"  {row.emoji} {label} {row.value}")
+        lines.append(f"  {label} {row.value}")
     return lines
 
 
 def _disclaimer() -> list[str]:
     return [
-        "ℹ️  Best-effort display — some info may be incomplete or inaccurate.",
-        f"   Request mob-specific support: {REPO_URL}/issues",
+        "Best-effort display — some info may be incomplete or inaccurate.",
+        f"Request mob-specific support: {REPO_URL}/issues",
     ]

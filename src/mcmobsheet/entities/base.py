@@ -21,9 +21,6 @@ class BaseEntityTranslator:
         self.cmd = command
         self.nbt = command.nbt
 
-    def emoji(self) -> str:
-        return common.ENTITY_EMOJI.get(self.cmd.entity_id, common.DEFAULT_ENTITY_EMOJI)
-
     def custom_name(self) -> Optional[str]:
         if "CustomName" in self.nbt:
             return translate.plain_text(self.nbt["CustomName"])

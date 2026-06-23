@@ -2,14 +2,12 @@
 
 CURRENT_MOBS is the full living-mob roster for Minecraft Java 26.2 ("Chaos Cubed",
 June 2026), derived from the PrismarineJS minecraft-data 1.21.11 registry plus the
-sole 26.2 addition (sulfur_cube). When a new version adds mobs, extend this list and
-the ENTITY_EMOJI map in entities/common.py together.
+sole 26.2 addition (sulfur_cube). When a new version adds mobs, extend this list.
 """
 
 import pytest
 
 from mcmobsheet.display import render_summon
-from mcmobsheet.entities.common import DEFAULT_ENTITY_EMOJI, ENTITY_EMOJI
 from mcmobsheet.types import SummonCommand
 
 CURRENT_MOBS = [
@@ -45,16 +43,6 @@ def test_roster_has_no_duplicates():
     assert len(CURRENT_MOBS) == len(set(CURRENT_MOBS))
 
 
-def test_every_mob_has_a_dedicated_emoji():
-    missing = [m for m in CURRENT_MOBS if m not in ENTITY_EMOJI]
-    assert missing == [], f"mobs falling back to the paw print: {missing}"
-
-
-def test_emoji_map_has_no_unknown_mobs():
-    extra = [m for m in ENTITY_EMOJI if m not in CURRENT_MOBS]
-    assert extra == [], f"emoji map entries not in the current roster: {extra}"
-
-
 @pytest.mark.parametrize("entity_id", CURRENT_MOBS)
 def test_each_mob_renders_minimal_sheet(entity_id):
     name = entity_id.split(":", 1)[1].replace("_", " ").title()
@@ -63,9 +51,6 @@ def test_each_mob_renders_minimal_sheet(entity_id):
     )
     output = render_summon(cmd)
     first_line = output.splitlines()[0]
-    # Title shows the mapped (non-fallback) emoji and the readable name.
-    assert ENTITY_EMOJI[entity_id] in first_line
-    assert DEFAULT_ENTITY_EMOJI not in first_line
-    assert name in first_line
-    # Minimal sheet always carries a rounded location line.
+    # Title is the readable name; minimal sheet always carries a rounded location.
+    assert first_line == name
     assert "Location: 1, 64, -3" in output

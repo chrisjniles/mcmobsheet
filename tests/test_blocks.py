@@ -30,7 +30,3 @@ def test_state_rows_shows_true_booleans_as_yes():
     rows = blocks.state_rows({"lit": "true"})
     assert rows[0].label == "Lit"
     assert rows[0].value == "Yes"
-
-
-def test_emoji_default():
-    assert blocks.emoji_for("minecraft:unknown_block") == blocks.DEFAULT_BLOCK_EMOJI

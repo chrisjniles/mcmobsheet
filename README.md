@@ -9,25 +9,25 @@ something you can actually read — health in hearts, jump strength in blocks,
 attributes in real units, and only the details that matter.
 
 ```
-🫏 Donkey — "Cloppin"
-📍 Location: -548, 66, -522
+Donkey — "Cloppin"
+Location: -548, 66, -522
 
 ── Status ────────────────────────────────
-  ❤️ Health:        8.4 hearts (16.8)
-  🤝 Tamed:         Yes
-  🪑 Saddled:       Yes
-  📦 Has Chest:     Yes
-  📌 Won't Despawn: Yes
-  🔗 Leashed at:    -551, 66, -523
-  🏠 Home:          -551, 66, -523
+  Health:        8.4 hearts (16.8)
+  Tamed:         Yes
+  Saddled:       Yes
+  Has Chest:     Yes
+  Won't Despawn: Yes
+  Leashed at:    -551, 66, -523
+  Home:          -551, 66, -523
 
 ── Attributes ────────────────────────────
-  🏃 Move Speed:  ~ 10.5 blocks/sec (0.242)
-  ⬆️ Jump Height: ~ 3.9 blocks (0.841)
-  💪 Max Health:  8.4 hearts (16.8)
+  Move Speed:  ~ 10.5 blocks/sec (0.242)
+  Jump Height: ~ 3.9 blocks (0.841)
+  Max Health:  8.4 hearts (16.8)
 
 ── Details ───────────────────────────────
-  🌡️ Temper: 65/100
+  Temper: 65/100
 ```
 
 ## Install
@@ -81,7 +81,7 @@ pbpaste | mcmobsheet
 
 - **Any entity** — best-effort stats (health, attributes, status effects, common
   flags) for every mob, with a note when there's no dedicated translator yet. Every
-  mob in current Minecraft (Java 26.2) gets a recognizable icon and a minimal sheet.
+  mob in current Minecraft (Java 26.2) renders at least a minimal sheet.
 - **Horse family** — donkeys, horses, mules, and skeleton/zombie horses get
   tailored output: taming, saddle, chest, temper, jump height, and more.
 - **Blocks** — `/setblock` commands with block states like

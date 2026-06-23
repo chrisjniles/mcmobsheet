@@ -22,28 +22,26 @@ class HorseTranslator(BaseEntityTranslator):
         rows = [common.health_row(nbt)]
 
         if "Tame" in nbt:
-            rows.append(common.Row("\U0001f91d", "Tamed", translate.yes_no(nbt["Tame"])))
+            rows.append(common.Row("Tamed", translate.yes_no(nbt["Tame"])))
 
-        rows.append(common.Row("\U0001fa91", "Saddled", "Yes" if _saddled(nbt) else "No"))
+        rows.append(common.Row("Saddled", "Yes" if _saddled(nbt) else "No"))
 
         if "ChestedHorse" in nbt:
-            rows.append(
-                common.Row("\U0001f4e6", "Has Chest", translate.yes_no(nbt["ChestedHorse"]))
-            )
+            rows.append(common.Row("Has Chest", translate.yes_no(nbt["ChestedHorse"])))
 
         rows += common.flag_rows(nbt)
         rows.append(common.leash_row(nbt))
 
         home = nbt.get("home_pos") or nbt.get("HomePos")
         if home:
-            rows.append(common.Row("\U0001f3e0", "Home", translate.coords_from_array(home)))
+            rows.append(common.Row("Home", translate.coords_from_array(home)))
 
         return [r for r in rows if r]
 
     def detail_rows(self) -> list[common.Row]:
         rows = []
         if "Temper" in self.nbt:
-            rows.append(common.Row("\U0001f321️", "Temper", f"{int(self.nbt['Temper'])}/100"))
+            rows.append(common.Row("Temper", f"{int(self.nbt['Temper'])}/100"))
         return rows
 
 
