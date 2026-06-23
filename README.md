@@ -3,7 +3,7 @@
 A CLI tool that turns Minecraft Java Edition `/summon` and `/setblock` data into
 clean, human-readable stat sheets.
 
-In-game, press **F3 + I** while looking at a mob or block to copy its full data to
+In-game, press **"F3 + I"** while targeting a mob or block to copy its full data to
 your clipboard. Paste that into `mcmobsheet` and it translates the raw NBT into
 something you can actually read — health in hearts, jump strength in blocks,
 attributes in real units, and only the details that matter.
