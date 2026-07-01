@@ -6,13 +6,14 @@ import argparse
 import sys
 
 from mcmobsheet import __version__
+from mcmobsheet._docs import MANUAL
 from mcmobsheet.display import render
 from mcmobsheet.parser import parse_command
 
 _PROMPT = "mcmobsheet> "
 _BANNER = (
     "mcmobsheet - paste a /summon or /setblock command (from F3+I) and press Enter.\n"
-    "Type 'quit' or press Ctrl+D to exit.\n"
+    "Type 'help' for the manual, 'quit' or Ctrl+D to exit.\n"
 )
 
 
@@ -30,6 +31,9 @@ def main(argv=None) -> int:
     args = parser.parse_args(argv)
 
     if args.command:
+        if args.command[0].lower() == "help":
+            print(MANUAL, end="")
+            return 0
         return _process(" ".join(args.command))
     if not sys.stdin.isatty():
         data = sys.stdin.read().strip()
@@ -49,6 +53,10 @@ def _interactive() -> int:
             continue
         if line.lower() in ("quit", "exit"):
             return 0
+        if line.lower() in ("help", "?"):
+            print(MANUAL, end="")
+            print()
+            continue
         _process(line)
         print()
 

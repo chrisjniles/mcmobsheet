@@ -53,12 +53,13 @@ Requires Python 3.10+.
 ### Interactive mode (default)
 
 Run `mcmobsheet` with no arguments to start an interactive prompt. Paste a command
-copied with **F3 + I** and press Enter. Type `quit` or press Ctrl+D to exit.
+copied with **F3 + I** and press Enter. Type `help` for the manual, `quit`, or press
+Ctrl+D to exit.
 
 ```sh
 $ mcmobsheet
 mcmobsheet - paste a /summon or /setblock command (from F3+I) and press Enter.
-Type 'quit' or press Ctrl+D to exit.
+Type 'help' for the manual, 'quit' or Ctrl+D to exit.
 
 mcmobsheet> /summon minecraft:donkey -548.07 66.00 -522.01 {Tame: 1b, ...}
 ```
@@ -76,6 +77,11 @@ mcmobsheet '/summon minecraft:donkey -548.07 66.00 -522.01 {Tame: 1b, ...}'
 ```sh
 pbpaste | mcmobsheet
 ```
+
+### Documentation
+
+Run `mcmobsheet help` (or type `help`/`?` at the interactive prompt) for the full
+manual. It's also installed as a man page: `man mcmobsheet`.
 
 ## What it understands
 
@@ -105,6 +111,15 @@ pip install -e .
 pip install pytest
 pytest
 ```
+
+If you edit `src/mcmobsheet/_docs.py` (the manual text shared by `mcmobsheet help`
+and the man page), regenerate `man/mcmobsheet.1` before committing:
+
+```sh
+python3 scripts/generate_man.py
+```
+
+A test (`tests/test_docs.py`) fails the suite if the two drift out of sync.
 
 ## License
 

@@ -1,6 +1,7 @@
 import io
 
 from mcmobsheet import cli
+from mcmobsheet._docs import MANUAL
 
 DONKEY = (
     '/summon minecraft:donkey -548.07 66.00 -522.01 '
@@ -57,3 +58,37 @@ def test_bad_command_returns_error(capsys):
     err = capsys.readouterr().err
     assert rc == 1
     assert "Could not parse" in err
+
+
+def test_help_argument_prints_manual(capsys):
+    rc = cli.main(["help"])
+    out = capsys.readouterr().out
+    assert rc == 0
+    assert out == MANUAL
+
+
+def test_help_argument_is_case_insensitive(capsys):
+    rc = cli.main(["HELP"])
+    out = capsys.readouterr().out
+    assert rc == 0
+    assert out == MANUAL
+
+
+def test_interactive_help_prints_manual(monkeypatch, capsys):
+    monkeypatch.setattr("sys.stdin.isatty", lambda: True, raising=False)
+    responses = iter(["help", "quit"])
+    monkeypatch.setattr("builtins.input", lambda prompt="": next(responses))
+    rc = cli.main([])
+    out = capsys.readouterr().out
+    assert rc == 0
+    assert MANUAL in out
+
+
+def test_interactive_question_mark_prints_manual(monkeypatch, capsys):
+    monkeypatch.setattr("sys.stdin.isatty", lambda: True, raising=False)
+    responses = iter(["?", "quit"])
+    monkeypatch.setattr("builtins.input", lambda prompt="": next(responses))
+    rc = cli.main([])
+    out = capsys.readouterr().out
+    assert rc == 0
+    assert MANUAL in out
