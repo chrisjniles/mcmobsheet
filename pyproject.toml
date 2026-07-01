@@ -1,8 +1,8 @@
 [project]
 name = "mcmobsheet"
-version = "1.0.1"
+version = "1.0.2"
 description = "A CLI tool that translates Minecraft /summon and /setblock data into human-readable information"
-requires-python = ">=3.10"
+requires-python = ">=3.9"
 license = "GPL-3.0-or-later"
 dependencies = []
 
